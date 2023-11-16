@@ -1,0 +1,85 @@
+<ion-header [translucent]="true">
+  <ion-toolbar [style]="'--background: var(--tp-color);'">
+    <ion-title [style]="'--color: var(--txt-color-tp);'">
+     AsistenciaDuoc
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Inicio</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card class="card-blank">
+    <ion-card-header>
+      <ion-card-title><strong>¡Bienvenido! {{ user?.name }} {{ user?.last_name }}👋</strong></ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      ¡Te damos la bienvenida al panel de asistencia DuocUC! Para poder marcar tu asistencia escanea el código QR que genere su profesor.
+    </ion-card-content>
+  </ion-card>
+
+  <div id="separator">
+    <div style="background-color: #F5F7FA; height: 19px; margin: 10px 0;"></div>
+  </div>
+
+  <!-- INFORMACIÓN PERSONAL DEL USUARIO -->
+  <ion-card class="card-blank">
+    <ion-card-header>
+      <ion-card-title><strong>Información Personal 🙎</strong></ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+     <div>
+      <ion-list>
+        <ion-item>
+          <ion-input readonly label="Nombre:" [value]="user?.name" ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input readonly label="Apellido:" [value]="user?.last_name" ></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-input readonly label="Rut:" [value]="user?.rut"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-input readonly label="Carrera:" [value]="user?.career"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          Latitud: {{ latitude }}
+        </ion-item>
+
+        <ion-item>
+          Longitud: {{ longitude }}
+        </ion-item>
+      </ion-list>
+     </div>
+    </ion-card-content>
+  </ion-card>
+
+
+  <!-- SEPARADOR DEL CONTENIDO -->
+  <div id="separator">
+    <div style="background-color: #F5F7FA; height: 19px; margin: 10px 0;"></div>
+  </div>
+
+  <!-- SCANEEAR -->
+  <div>
+    <ion-button expand="block" color="primary" [routerLink]="'/clase-registrada'">
+      <ion-icon name="camera-outline" style="margin-right: 10px;"></ion-icon>
+      Leer un QR
+    </ion-button>
+  </div>
+
+  
+    
+    <!-- CERRAR SESIÓN  [Esto es temporal, ya que en el futuro se piensa hacer un menú de hamburguesa para mover el Cerrar sesión]--> 
+    <ion-button expand="block" color="danger" (click)="logout()">
+      <ion-icon name="log-out-outline" style="margin-right: 10px;"></ion-icon>
+      Cerrar sesión</ion-button>
+</ion-content>

@@ -1,0 +1,92 @@
+<ion-header [translucent]="true">
+  <ion-toolbar [style]="'--background: var(--tp-color);'">
+    <ion-title [style]="'--color: var(--txt-color-tp);'">Regístrate</ion-title>
+    <ion-button (click)="volver()" slot="end" style="margin-right: 10px; color: #fff; text-decoration: none;">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+       Volver</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">register</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="separator">
+    <div style="background-color: #EEEEEE; height: 57px; margin: 0px 0;">
+      <p style="margin: 0;padding-top: 20px ;padding-left: 21px; color: #AEAEAE;">Introduzca su información</p>
+    </div>
+  </div>
+
+
+  <ion-card class="card-blank">
+    <ion-card-content>
+      <ion-list>
+        <!-- Usuario -->
+        <ion-item>
+          <ion-label position="floating">Usuario</ion-label>
+          <ion-input type="text" placeholder="Ingrese su usuario" [(ngModel)]="username"></ion-input>
+        </ion-item>
+
+        <!-- Nombre -->
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input type="text" placeholder="Ingrese su nombre" [(ngModel)]="name"></ion-input>
+        </ion-item>
+
+        <!-- Apellido -->
+        <ion-item>
+          <ion-label position="floating">Apellido</ion-label>
+          <ion-input type="text" placeholder="Ingrese su apellido" [(ngModel)]="last_name"></ion-input>
+        </ion-item>
+
+        <!-- Rut -->
+        <ion-item>
+          <ion-label position="floating">Rut</ion-label>
+          <ion-input type="text" placeholder="Ingrese su rut" [(ngModel)]="rut"></ion-input>
+        </ion-item>
+
+        <!-- Carrera -->
+
+        <ion-item>
+          <ion-select label="Carrera" placeholder="Seleccionar" [(ngModel)]="career">
+            <ion-select-option value="Ingeniería Agricola">Ingeníeria Agricola</ion-select-option>
+            <ion-select-option value="Ingeniería en Medio Ambiente">Ingeníeria en Medio Ambiente</ion-select-option>
+            <ion-select-option value="Ingeniería en Informática">Ingeníeria en informática</ion-select-option>
+          </ion-select>
+        </ion-item>
+        
+
+        <!-- Region -->
+        <ion-item>
+          <ion-select label="Región" (ionChange)="cargarComuna()" placeholder="Seleccione una región" [(ngModel)]="regionSelect">
+            <ion-select-option *ngFor="let i of regiones" [value]="i.id">{{i.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item> 
+
+        <!-- Comuna -->
+
+        <ion-item>
+          <ion-select label="Comuna" [disabled]="disabledComuna" placeholder="Seleccione una comuna" [(ngModel)]="comunaSelect">
+            <ion-select-option *ngFor="let i of comunas" [value]="i.id">{{i.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- Contraseña -->
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password" placeholder="Ingrese su contraseña" [(ngModel)]="password"></ion-input>
+        </ion-item>
+
+
+        <br>
+        <div>
+          <ion-button expand="block" color="primary" (click)="register()">Registrarse</ion-button>
+        </div>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
